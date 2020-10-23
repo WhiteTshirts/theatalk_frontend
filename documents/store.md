@@ -228,7 +228,7 @@ reducerに紐付いたAction
 ### reducer
 
 - rooms { Object[] } : ルーム一覧
-- isLoading { boolean } : ログイン or 新規登録の処理を行っているかどうか
+- isLoading { boolean } : ルーム取得などの処理を行っているかどうか
 - error { string } : エラーメッセージ
 
 初期値
@@ -292,6 +292,7 @@ reducerに紐付いたAction
 
 ユーザーに紐付いたタグを管理する.
 
+// #NOTE: 新しくタグを登録する際のAPIの話
 全体のタグとユーザーに紐付いたタグをどうやって管理するか
 - タグ全体を取得するのはStoreでやらない(tag登録ページでのStateに持たせる)
 - これだとReduxのActionからtag登録ページのStateを更新する方法が無い
