@@ -386,3 +386,56 @@ reducerに紐付いたAction
       - その後タグ取得処理をdispatch
     - 正常終了しなかった場合はユーザーとタグを紐付け登録に失敗した時のActionをdispatch
   - 判断リクエストに失敗した場合は判断リクエストに失敗した時のActionをdispatch
+
+## localStorageStore
+
+目的: localStorageへの書き込みや読み取りを管理
+auth tokenや, 入室しているroomの情報などを保持する
+
+### reducer
+
+- storage { Object[] } : local Storageで管理しているデータ一覧
+- isLoading { boolean } : 処理を行っているかどうか
+- error { string } : エラーメッセージ
+
+初期値
+- storage: []
+- isLoading: False
+- error: null
+
+### Action
+
+reducerに紐付いたAction
+
+- データ取得
+  - データ取得リクエスト
+    - isLoading = True
+    - その他パラメーターは初期値に設定
+  - データ取得に成功した時
+    - storageは取得したものを設定
+    - その他パラメーターは初期値に設定
+  - データ取得に失敗した時
+    - errorは取得したものを設定
+    - その他パラメーターは初期値に設定
+- データ登録
+  - データ登録リクエスト
+    - isLoading = True
+    - その他パラメーターは現在の状態を引き継ぐ
+  - データ登録に成功した時
+    - isLoading = False
+    - その他パラメーターは現在の状態を引き継ぐ
+  - データ登録に失敗した時
+    - isLoading = False
+    - errorは取得したものを設定
+    - その他パラメーターは現在の状態を引き継ぐ
+
+上記のActionを組み合わせたAction
+
+- データ取得処理
+  - データ取得リクエストをdispatch
+  - local storageを叩いて正常終了したならデータ取得に成功した時のActionをdispatch
+  - 正常終了しなかった場合はデータ取得に失敗した時のActionをdispatch
+- データ登録処理
+  - データ登録リクエストをdispatch
+  - local storageを叩いて正常終了したならデータ登録に成功した時のActionをdispatch
+  - 正常終了しなかった場合はデータ登録に失敗した時のActionをdispatch
