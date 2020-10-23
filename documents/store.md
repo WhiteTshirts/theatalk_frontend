@@ -131,9 +131,7 @@ reducerに紐付いたAction
     - その後local storageに保存するActionをdispatch
   - 正常終了しなかった場合は新規登録に失敗した時のActionをdispatch
 - local storageへの書き込み処理
-  - local storageのActionを内部で叩く
-  - SaveTokenみたいな関数をLocal Storage側のActionに用意しておく
-  - それをこちら側のActionから呼び出す
+  - local storageのActionを内部で叩く(引数にtokenを渡す)
 
 ## roomStore
 
@@ -214,9 +212,7 @@ reducerに紐付いたAction
     - その後チャットを終了するActionをdispatch
   - 正常終了しなかった場合は退室に失敗した時のActionをdispatch
 - local storageへの書き込み処理
-  - local storageのActionを内部で叩く
-  - SaveRoomみたいな関数をLocal Storage側のActionに用意しておく
-  - それをこちら側のActionから呼び出す
+  - local storageのActionを内部で叩く(引数にroom idを渡す)
 - チャット処理(チャットを行う)
   - チャット送信リクエストをdispatch
   - APIを叩いて正常終了したならチャット送信に成功した時のActionをdispatch
