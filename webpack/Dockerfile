@@ -4,6 +4,7 @@ EXPOSE 3000
 WORKDIR /app
 COPY ./webpack.config.js /app/webpack.config.js
 COPY ./package.json /app/package.json
+COPY ./tsconfig.json /app/tsconfig.json
 COPY ./.babelrc /app/.babelrc
 COPY ./.eslintrc.js /app/.eslintrc.js
 
