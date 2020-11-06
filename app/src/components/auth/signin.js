@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import SubmitButton from '../atoms/submitButton';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -110,9 +111,7 @@ const Signin = () => {
             />
           </div>
           <div>
-            <Button className={classes.button} type="submit">
-              ログイン
-            </Button>
+            <SubmitButton msg="ログイン" backgroundColor="#F03636" />
           </div>
         </form>
       </Paper>
