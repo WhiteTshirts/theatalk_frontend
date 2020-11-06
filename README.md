@@ -8,6 +8,20 @@
 `docker-compose up`
 で開発環境の実行が出来ます。
 
+## サーバーの建て方
+
+`docker-compose build`
+
+`docker-compose up`
+
+`docker-compose exec web /bin/bash`
+
+`rails db:create`
+
+`rails db:migrate`
+
+`exit`
+
 ## testとlintの回し方
 
 `docker-compose exec front bash` でコンテナにアクセスします。
