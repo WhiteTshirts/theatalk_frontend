@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import BasicButton from '../atoms/basicButton';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { AuthSelector } from '../header';
@@ -53,12 +53,14 @@ const Toppage = () => {
           <h2>「好み」でつながるコミュニケーションツール</h2>
           <h1>TheaTalk</h1>
         </div>
-        <Button className={classes.buttonSignUp} onClick={moveSignupPage} variant="contained" >
-          Sign up
-        </Button>
-        <Button className={classes.buttonLogin} onClick={moveLoginPage} variant="contained">
-          Login
-        </Button>
+        {/* TODO: ボタンをクリックされた時に関数呼び出しが出来ないバグを潰す */}
+        {/* TODO: ボタンの距離を離すcssコードをdivタグに付ける */}
+        <div>
+          <BasicButton msg="Sign up" backgroundColor="#F03636" onForm={false} handleClick={() => moveSignupPage} />
+        </div>
+        <div>
+          <BasicButton msg="Login" backgroundColor="gray" onForm={false} handleClick={() => moveLoginPage} />
+        </div>
       </div>
     </div>
   );

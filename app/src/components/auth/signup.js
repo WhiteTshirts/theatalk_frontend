@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import SubmitButton from '../atoms/submitButton';
+import BasicButton from '../atoms/basicButton';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -113,7 +113,7 @@ const Signup = () => {
           />
           </div>
           <div>
-            <SubmitButton msg="登録" backgroundColor="#F03636" />
+            <BasicButton msg="登録" backgroundColor="#F03636" onForm={true} />
           </div>
         </form>
       </Paper>
