@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
 import SubmitButton from '../atoms/submitButton';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../actions/authAction';
-import Alert from '@material-ui/lab/Alert'; 
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles(() => ({
   textBox: {
@@ -25,10 +24,6 @@ const useStyles = makeStyles(() => ({
     padding: 20,
     justify: 'center',
     textAlign: 'center',
-  },
-  button: {
-    color: 'white',
-    backgroundColor: '#F03636',
   },
 }));
 
