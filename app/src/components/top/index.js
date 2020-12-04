@@ -46,10 +46,10 @@ const Toppage = () => {
         {/* TODO: ボタンをクリックされた時に関数呼び出しが出来ないバグを潰す */}
         {/* TODO: ボタンの距離を離すcssコードをdivタグに付ける */}
         <div>
-          <BasicButton msg="Sign up" backgroundColor="#F03636" onForm={false} handleClick={() => moveSignupPage} />
+          <BasicButton msg="Sign up" backgroundColor="#F03636" onForm={false} handleClick={() => moveSignupPage()} />
         </div>
         <div>
-          <BasicButton msg="Login" backgroundColor="gray" onForm={false} handleClick={() => moveLoginPage} />
+          <BasicButton msg="Login" backgroundColor="gray" onForm={false} handleClick={() => moveLoginPage()} />
         </div>
       </div>
     </div>
