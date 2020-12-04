@@ -33,7 +33,6 @@ const BasicButton = (props) => {
         !props.onForm &&
         <Button className={styles.button} onClick={props.handleClick} variant="contained">
           {props.msg}
-          {props.msg}
         </Button>
       }
     </>
