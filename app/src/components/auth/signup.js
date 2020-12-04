@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import BasicButton from '../atoms/basicButton';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -24,10 +24,6 @@ const useStyles = makeStyles(() => ({
     padding: 20,
     justify: 'center',
     textAlign: 'center',
-  },
-  button: {
-    color: 'white',
-    backgroundColor: '#F03636',
   },
 }));
 
@@ -100,7 +96,6 @@ const Signup = () => {
           <div>
           <TextField
             className={classes.textBox}
-            name="password"
             label="パスワード"
             type="password"
             inputRef={register}
@@ -118,9 +113,7 @@ const Signup = () => {
           />
           </div>
           <div>
-          <Button className={classes.button} type="submit">
-            登録
-          </Button>
+            <BasicButton msg="登録" backgroundColor="#F03636" onForm={true} />
           </div>
         </form>
       </Paper>
