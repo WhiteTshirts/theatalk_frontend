@@ -22,16 +22,6 @@ const useStyles = makeStyles(() => ({
     "background": `url(${window.location.origin}/images/image.png)`,
     "background-size": "contain",
   },
-  buttonSignUp: {
-    color: 'white',
-    backgroundColor: '#F03636',
-    margin: 8,
-  },
-  buttonLogin: {
-    color: 'white',
-    backgroundColor: "gray",
-    margin: 8,
-  },
 }));
 
 const Toppage = () => {
