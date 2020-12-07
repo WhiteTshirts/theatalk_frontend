@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 /**
  * 入力欄
- * @param {string} props.name id
+ * @param {string} props.name 
  * @param {string} props.label 入力欄に書いてある文字
  * @param {boolean} props.isPassword パスワードかどうか
  */

@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
 import BasicButton from '../atoms/basicButton';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -83,7 +82,7 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn name="name" label="ユーザー名" isPassword={false} />
+            <InputColumn name="name" label="ユーザー名"  />
           </div>
           <div>
             <InputColumn name="password" label="パスワード" isPassword={true} />
