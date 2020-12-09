@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Alert from '@material-ui/lab/Alert';  // Hiranuma
 import users from '../../reducers/usersReducer';
+import UserData from '../atoms/userData';
 
 const useStyles = makeStyles ((theme)=>({
   root:{
@@ -76,8 +77,7 @@ export const UserList = (users) => {
         {
           users.users.map((user, index) =>(
             <div key={index.toString()}>
-              name:{user.name}
-  
+              <UserData name={user.name} />
             </div>
           ))
         }

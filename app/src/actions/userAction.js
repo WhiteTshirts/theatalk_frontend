@@ -11,6 +11,7 @@ export const getUsersSuccess = (json) => ({
   users: json,
   receivedAt: Date.now(),
 });
+
 export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 export const getUsersFailure = (error) => ({
   type: GET_USERS_FAILURE,
@@ -33,7 +34,6 @@ export const getUserSuccess = (json) => ({
   user: json,
   receivedAt: Date.now(),
 });
-
 
 export const ENTER_USER_REQUEST = 'ENTER_USER_REQUEST';
 export const enterUserRequest = () => ({
@@ -68,7 +68,6 @@ export const existUserFailure = (error) => ({
   type: EXIST_USER_FAILURE,
   error,
 })
-
 
 export const SET_USER = 'SET_USER';
 export const setUser = (user) => ({
@@ -109,8 +108,6 @@ export const exitUser = (token) => (dispatch) => {
     })
     .catch((err) => dispatch(existUserFailure(err)));
 }
-
-
 
 export const getUsers = (token) => (dispatch) => {
   dispatch(getUsersRequest());
