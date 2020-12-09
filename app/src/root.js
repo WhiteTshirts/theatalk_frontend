@@ -9,6 +9,8 @@ import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import ChatTest from './components/room/chat';
 import Room from './components/room/room';
+import User from './components/user/user';
+import Users from './components/user/users';
 import Tags from './components/tag/tags';
 
 const Notfound = () => (
@@ -27,6 +29,8 @@ const Root = () => (
       <Auth>
         <Switch>
           <Route exact path="/" render={() => <Main />} />
+          <Route exact path="/users" render={() => <Users />} />
+          <Route exact path="/users/:id" render={() => <User />} />
           <Route exact path="/rooms/:id" render={() => <Room />} />
           <Route exact path="/tags" render={() => <Tags />} />
         </Switch>
