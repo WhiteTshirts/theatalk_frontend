@@ -82,13 +82,13 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn name="name" label="ユーザー名"  />
+            <InputColumn inputRef={register.inputRef} inputName="username" inputLabel="ユーザー名"  />
           </div>
           <div>
-            <InputColumn name="password" label="パスワード" isPassword={true} />
+            <InputColumn inputRef={register.inputRef} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
-            <InputColumn name="anotherPassword" label="パスワード(確認)" isPassword={true} />
+            <InputColumn inputRef={register.inputRef} inputName="anotherPassword" inputLabel="パスワード(確認)" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="登録" backgroundColor="#F03636" onForm={true} />
