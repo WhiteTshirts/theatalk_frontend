@@ -36,7 +36,7 @@ export const UserPrint = (user) => {
       <p>loading</p>
     );
   }
-  console.log(user.user)
+
   return (
     <div>
       {

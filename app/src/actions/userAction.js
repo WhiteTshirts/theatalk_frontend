@@ -128,8 +128,7 @@ export const getUser = (id) => (dispatch) => {
   dispatch(getUserRequest());
   return axios.get(`http://localhost:5000/api/v1/users/${id}`)
     .then((res) => {
-      console.log(res.data.data.user)
-      dispatch(getUserSuccess(res.data.data.user))
+      dispatch(getUserSuccess(res.data.data.user[0]))
     })
     .catch((err) => dispatch(getUsersFailure(err)));
 };
