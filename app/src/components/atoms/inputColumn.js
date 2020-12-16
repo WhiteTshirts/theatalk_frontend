@@ -10,10 +10,11 @@ import TextField from '@material-ui/core/TextField';
  * @param {boolean} props.isPassword パスワードかどうか
  */
 const InputColumn = (props) => {
-  const useStyles = makeStyles(() => ({
+
+  const useStyles = makeStyles((thema) => ({
     textBox: {
-      margin: 20
-    },
+      margin: 10,
+    }
   }));
 
   const styles = useStyles();
@@ -24,7 +25,7 @@ const InputColumn = (props) => {
         !props.isPassword &&
         <TextField
               inputRef={props.inputRef}
-              // class={styles.textBox}
+              className={styles.textBox}
               name={props.inputName}
               label={props.inputLabel}
               variant="filled"
@@ -35,7 +36,7 @@ const InputColumn = (props) => {
         props.isPassword &&
         <TextField
               inputRef={props.inputRef}
-              // class={styles.textBox}
+              className={styles.textBox}
               name={props.inputName}
               label={props.inputLabel}
               type="password"
