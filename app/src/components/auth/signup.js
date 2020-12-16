@@ -1,6 +1,3 @@
-/*
-* Designed by Yuya Miyata
-*/
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -82,7 +79,7 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn inputRef={register.inputRef} inputName="username" inputLabel="ユーザー名"  />
+            <InputColumn inputRef={register.inputRef} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
             <InputColumn inputRef={register.inputRef} inputName="password" inputLabel="パスワード" isPassword={true} />
