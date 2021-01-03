@@ -79,9 +79,9 @@ export const searchRoomsFailure = (error) => ({
   error,
 });
 
-export const enterRoom = (token, history, room) => (dispatch) => {
+export const enterRoom = (history, room) => (dispatch, getState) => {
+  const store = getState();
   dispatch(enterRoomRequest());
-  console.log(room);
   const id = JSON.stringify({
     user: {
       room_id: room.id
@@ -89,24 +89,25 @@ export const enterRoom = (token, history, room) => (dispatch) => {
   });
   return axios.post('http://localhost:5000/api/v1/room_users', id, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${store.auth.token}`,
     },
   })
     .then((res) => {
-      dispatch(enterRoomSuccess());
+      // TODO: chatを開始する
+      dispatch(enterRoomSuccess(room));
       localStorage.setItem('room', JSON.stringify(room));
-      dispatch(setRoom(room))
     })
     .catch((err) => dispatch(getRoomsFailure(err)))
     .then(() => history.push(`/rooms/${room.id}`))
     .catch((err) => dispatch(getRoomsFailure(err)))
 };
 
-export const exitRoom = (token) => (dispatch) => {
+export const exitRoom = () => (dispatch, getState) => {
+  const store = getState();
   dispatch(existRoomRequest());
   return axios.get('http://localhost:5000/api/v1/room_users/leave', {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${store.auth.token}`,
     },
   })
     .then((res) => {
@@ -132,7 +133,6 @@ export const getRooms = (token) => (dispatch) => {
  * 画面がリロードされた際に、localstrageからルーム情報を取得する
  */
 export const roomReload = () => (dispatch) => {
-  dispatch(enterRoomRequest());
   const room = JSON.parse(localStorage.getItem('room'));
   dispatch(setRoom(room))
 };
