@@ -24,9 +24,11 @@ export const enterRoomRequest = () => ({
 });
 
 export const ENTER_ROOM_SUCCESS = 'ENTER_ROOM_SUCCESS';
-export const enterRoomSuccess = () => ({
+export const enterRoomSuccess = ({room, ws, chats}) => ({
   type: ENTER_ROOM_SUCCESS,
-  receivedAt: Date.now(),
+  room,
+  ws,
+  chats,
 });
 
 export const ENTER_ROOM_FAILURE = 'ENTER_ROOM_FAILURE';
@@ -43,7 +45,6 @@ export const existRoomRequest = () => ({
 export const EXIST_ROOM_SUCCESS = 'EXIST_ROOM_SUCCESS';
 export const existRoomSuccess = () => ({
   type: EXIST_ROOM_SUCCESS,
-  receivedAt: Date.now(),
 });
 
 export const EXIST_ROOM_FAILURE = 'EXIST_ROOM_FAILURE';
@@ -53,10 +54,11 @@ export const existRoomFailure = (error) => ({
 })
 
 export const SET_ROOM = 'SET_ROOM';
-export const setRoom = (room) => ({
+export const setRoom = ({room, ws, chats}) => ({
   type: SET_ROOM,
-  room: room,
-  receivedAt: Date.now(),
+  room,
+  ws,
+  chats,
 });
 
 export const SEARCH_ROOMS_REQUEST = 'SEARCH_ROOMS_REQUEST';
