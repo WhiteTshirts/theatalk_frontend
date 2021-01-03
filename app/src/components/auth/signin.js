@@ -1,10 +1,6 @@
-/*
-* designed by Yuya Miyata
-*/
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import TextField from '@material-ui/core/TextField';
 import BasicButton from '../atoms/basicButton';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,11 +9,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../actions/authAction';
 import Alert from '@material-ui/lab/Alert';
+import InputColumn from '../atoms/inputColumn';
 
 const useStyles = makeStyles(() => ({
-  textBox: {
-    margin: 20,
-  },
   formSpace: {
     margin: 'auto',
     width: 300,
@@ -70,7 +64,6 @@ const Signin = () => {
         {(() => {
           if (err !== null && err !== undefined) {
             return (
-              //karkawa
               <div>
                 <Alert severity="error"> <strong> ユーザー名またはパスワードが違います</strong> </Alert>
               </div>
@@ -82,28 +75,14 @@ const Signin = () => {
               </div>
             );
           }
-          //karkawa
         })()}
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <TextField
-              className={classes.textBox}
-              name="name"
-              label="ユーザー名"
-              inputRef={register}
-              variant="filled"
-            />
+            <InputColumn inputRef={register.inputRef} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
-            <TextField
-              className={classes.textBox}
-              name="password"
-              label="パスワード"
-              type="password"
-              inputRef={register}
-              variant="filled"
-            />
+            <InputColumn inputRef={register.inputRef} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="ログイン" backgroundColor="#F03636" onForm={true} />

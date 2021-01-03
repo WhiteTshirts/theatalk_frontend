@@ -1,11 +1,7 @@
-/*
-* Designed by Yuya Miyata
-*/
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import TextField from '@material-ui/core/TextField';
 import BasicButton from '../atoms/basicButton';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,11 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { signup } from '../../actions/authAction';
 import Alert from '@material-ui/lab/Alert';
+import InputColumn from '../atoms/inputColumn';
 
 const useStyles = makeStyles(() => ({
-  textBox: {
-    margin: 20,
-  },
   formLayout: {
     margin: 'auto',
     width: 300,
@@ -85,32 +79,13 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-          <TextField
-            className={classes.textBox}
-            name="name"
-            label="ユーザー名"
-            inputRef={register}
-            variant="filled"
-          />
+            <InputColumn inputRef={register.inputRef} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
-          <TextField
-            className={classes.textBox}
-            label="パスワード"
-            type="password"
-            inputRef={register}
-            variant="filled"
-          />
+            <InputColumn inputRef={register.inputRef} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
-          <TextField
-            className={classes.textBox}
-            name="anotherPassword"
-            label="パスワード(確認)"
-            type="password"
-            inputRef={register}
-            variant="filled"
-          />
+            <InputColumn inputRef={register.inputRef} inputName="anotherPassword" inputLabel="パスワード(確認)" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="登録" backgroundColor="#F03636" onForm={true} />
