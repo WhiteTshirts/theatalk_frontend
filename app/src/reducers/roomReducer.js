@@ -4,49 +4,63 @@ import {
 } from '../actions/roomAction';
 
 const initalState = {
-  isFetching: false,
   room: {},
+  ws: null,
+  chats: [],
+  isLoading: false,
+  error: null,
 };
 
 const room = (state = initalState, action) => {
   switch (action.type) {
     case SET_ROOM:
       return {
-        ifFetching: false,
         room: action.room,
+        ws: action.ws,
+        chats: action.chats,
+        isLoading: initalState.isLoading,
+        error: initalState.error,
       };
     case ENTER_ROOM_REQUEST:
       return {
-        isFetching: true,
-        room: state.room,
+        room: initalState.room,
+        ws: initalState.ws,
+        chats: initalState.chats,
+        isLoading: true,
+        error: initalState.error,
       };
     case ENTER_ROOM_SUCCESS:
       return {
-        isFetching: false,
-        room: state.room,
-        lastUpdated: action.receivedAt,
+        room: action.room,
+        ws: action.ws,
+        chats: action.chats,
+        isLoading: initalState.isLoading,
+        error: initalState.error,
       };
     case ENTER_ROOM_FAILURE:
       return {
-        isFetching: false,
-        room: state.room,
+        room: initalState.room,
+        ws: initalState.ws,
+        chats: initalState.chats,
+        isLoading: initalState.isLoading,
         error: action.error,
       };
     case EXIST_ROOM_REQUEST:
       return {
-        isFetching: true,
         room: state.room,
+        ws: state.ws,
+        chats: state.chats,
+        isLoading: true,
+        error: state.error,
       };
     case EXIST_ROOM_SUCCESS:
-      return {
-        isFetching: false,
-        room: null,
-        lastUpdated: action.receivedAt,
-      };
+      return initalState
     case EXIST_ROOM_FAILURE:
       return {
-        isFetching: true,
         room: state.room,
+        ws: state.ws,
+        chats: state.chats,
+        isLoading: initalState.isLoading,
         error: action.error,
       };
     default:
