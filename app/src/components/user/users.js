@@ -111,7 +111,6 @@ const Users = () => {
     <div className>
       <h2 className={classes.main}>Add Your Favorite</h2>
         <Paper className={classes.paper} elevation={5}>
- 
           <Grid item>
           <p className={classes.left}>Users</p>
           <Paper elevation={0} variant="outlined" className={classes.userPanel, classes.left}>
