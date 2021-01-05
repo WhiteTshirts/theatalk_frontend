@@ -2,7 +2,7 @@ import {
   RELOAD_REQUEST, RELOAD_SUCCESS, RELOAD_FAILURE,
   SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE,
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE,
-  LOGOUT_REQUEST, // Hiranuma
+  LOGOUT, // Hiranuma
 } from '../actions/authAction';
 
 const initialState = {
@@ -10,81 +10,85 @@ const initialState = {
   id: null,
   isLoggedIn: false,
   isLoading: true,
+  error: null,
 };
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP_REQUEST:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
         isLoading: true,
+        error: initialState.error,
       };
     case SIGNUP_SUCCESS:
       return {
         token: action.token,
         id: action.id,
         isLoggedIn: true,
-        isLoading: false,
-        lastUpdated: action.receivedAt,
+        isLoading: initialState.isLoading,
+        error: initialState.error,
       };
     case SIGNUP_FAILURE:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
-        isLoading: false,
-        signup_error: action.error,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
+        isLoading: initialState.isLoading,
+        error: action.error,
       };
     case LOGIN_REQUEST:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
         isLoading: true,
+        error: initialState.error,
       };
     case LOGIN_SUCCESS:
       return {
         token: action.token,
         id: action.id,
         isLoggedIn: true,
-        isLoading: false,
-        lastUpdated: action.receivedAt,
+        isLoading: initialState.isLoading,
+        error: initialState.error,
       };
     case LOGIN_FAILURE:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
-        isLoading: false,
-        login_error: action.error,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
+        isLoading: initialState.isLoading,
+        error: action.error,
       };
     case RELOAD_REQUEST:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
         isLoading: true,
+        error: initialState.error,
       };
     case RELOAD_SUCCESS:
       return {
         token: action.token,
         id: action.id,
         isLoggedIn: true,
-        isLoading: false,
-        lastUpdated: action.receivedAt,
+        isLoading: initialState.isLoading,
+        error: initialState.error,
       };
     case RELOAD_FAILURE:
       return {
-        token: null,
-        id: null,
-        isLoggedIn: false,
-        isLoading: false,
+        token: initialState.token,
+        id: initialState.id,
+        isLoggedIn: initialState.isLoggedIn,
+        isLoading: initialState.isLoading,
         error: action.error,
       };
       //Hiranuma
-    case LOGOUT_REQUEST:
+    case LOGOUT:
       return initialState
     default:
       return state;
