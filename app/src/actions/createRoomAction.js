@@ -45,7 +45,7 @@ export const createRoom = (token, data, history) => (dispatch) => {
   })
     .then((res) => {
       dispatch(createRoomSuccess())
-      dispatch(enterRoom(token, history, res.data.data.room))
+      dispatch(enterRoom(token, history, res.data.room))
     })
     .catch((err) => dispatch(createRoomFailure(err)))
 };
