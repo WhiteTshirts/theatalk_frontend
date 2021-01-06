@@ -10,7 +10,6 @@ export const reloadSuccess = (token, id) => ({
   type: RELOAD_SUCCESS,
   token,
   id,
-  receivedAt: Date.now(),
 });
 
 export const RELOAD_FAILURE = 'RELOAD_FAILURE';
@@ -29,7 +28,6 @@ export const loginSuccess = (token, id) => ({
   type: LOGIN_SUCCESS,
   token,
   id,
-  receivedAt: Date.now(),
 });
 
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -48,7 +46,6 @@ export const signupSuccess = (token, id) => ({
   type: SIGNUP_SUCCESS,
   token,
   id,
-  receivedAt: Date.now(),
 });
 
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
@@ -56,14 +53,13 @@ export const signupFailure = (error) => ({
   type: SIGNUP_FAILURE,
   error,
 });
+
 // Hiranuma
-export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
-  type: LOGOUT_REQUEST,
+  type: LOGOUT,
 });
 
-// TODO: 実際のapiを叩く箇所を実装する
-// TODO: redux-thunkに置き換える
 /**
  * ログインアクションをdispatchする
  * @param {Object} user - ログインに必要なデータが格納されている
@@ -73,9 +69,9 @@ export const logout = () => ({
  */
 export const login = (user, history) => (dispatch) => {
   dispatch(loginRequest());
-  // return axios.post('http://localhost:8000/auth/login', user)
   return axios.post('http://localhost:5000/api/v1/login', user)
     .then((res) => {
+      // HACK: サーバーからのデータを整形してもらう
       localStorage.setItem('jwt', res.data.token);
       localStorage.setItem('id', res.data.user.id);
       dispatch(loginSuccess(res.data.token, res.data.user.id));
@@ -84,8 +80,6 @@ export const login = (user, history) => (dispatch) => {
     .catch((err) => dispatch(loginFailure(err)));
 };
 
-// TODO: 実際のapiを叩く箇所を実装する
-// TODO: redux-thunkに置き換える
 /**
  * 登録アクションをdispatchする
  * @param {Object} user - ログインに必要なデータが格納されている
@@ -97,6 +91,7 @@ export const signup = (user, history) => (dispatch) => {
   dispatch(signupRequest());
   return axios.post('http://localhost:5000/api/v1/users', user)
     .then((res) => {
+      // HACK: サーバーからのデータを整形してもらう
       localStorage.setItem('jwt', res.data.token);
       localStorage.setItem('id', res.data.user.id);
       console.log(res.data);

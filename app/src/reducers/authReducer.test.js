@@ -7,23 +7,18 @@ import {
 } from '../actions/authAction';
 
 import {
-  jest, describe, test, expect, beforeAll,
+  describe, test, expect,
 } from '../test/test-utils';
 
 describe('auth reducer', () => {
-  beforeAll(() => {
-    // 時間を固定する
-    const OriginalDate = Date;
-    const now = new OriginalDate('2019/8/1 12:00:00');
-    Date.now = jest.fn().mockReturnValue(now.valueOf());
-  });
-
   test('should return the initial state', () => {
     expect(auth(undefined, {})).toEqual(
       {
         token: null,
+        id: null,
         isLoggedIn: false,
         isLoading: true,
+        error: null,
       },
     );
   });
@@ -36,26 +31,30 @@ describe('auth reducer', () => {
     ).toEqual(
       {
         token: null,
+        id: null,
         isLoggedIn: false,
         isLoading: true,
+        error: null,
       },
     );
   });
 
   test('should handle SIGNUP_SUCCESS', () => {
     const token = 'token';
+    const id = 'id';
     const expectedObject = {
       token,
+      id,
       isLoggedIn: true,
       isLoading: false,
-      lastUpdated: Date.now(),
+      error: null,
     };
 
     expect(
       auth([], {
         type: SIGNUP_SUCCESS,
         token,
-        receivedAt: Date.now(),
+        id,
       }),
     ).toEqual(expectedObject);
   });
@@ -70,9 +69,10 @@ describe('auth reducer', () => {
       }),
     ).toEqual({
       token: null,
+      id: null,
       isLoggedIn: false,
       isLoading: false,
-      signup_error: error,
+      error: error,
     });
   });
 
@@ -84,26 +84,30 @@ describe('auth reducer', () => {
     ).toEqual(
       {
         token: null,
+        id: null,
         isLoggedIn: false,
         isLoading: true,
+        error: null,
       },
     );
   });
 
   test('should handle LOGIN_SUCCESS', () => {
     const token = 'token';
+    const id = 'id';
     const expectedObject = {
       token,
+      id,
       isLoggedIn: true,
       isLoading: false,
-      lastUpdated: Date.now(),
+      error: null,
     };
 
     expect(
       auth([], {
         type: LOGIN_SUCCESS,
         token,
-        receivedAt: Date.now(),
+        id,
       }),
     ).toEqual(expectedObject);
   });
@@ -118,9 +122,10 @@ describe('auth reducer', () => {
       }),
     ).toEqual({
       token: null,
+      id: null,
       isLoggedIn: false,
       isLoading: false,
-      login_error: error,
+      error: error,
     });
   });
 
@@ -132,26 +137,30 @@ describe('auth reducer', () => {
     ).toEqual(
       {
         token: null,
+        id: null,
         isLoggedIn: false,
         isLoading: true,
+        error: null,
       },
     );
   });
 
   test('should handle RELOAD_SUCCESS', () => {
     const token = 'token';
+    const id = 'id';
     const expectedObject = {
       token,
+      id,
       isLoggedIn: true,
       isLoading: false,
-      lastUpdated: Date.now(),
+      error: null,
     };
 
     expect(
       auth([], {
         type: RELOAD_SUCCESS,
         token,
-        receivedAt: Date.now(),
+        id,
       }),
     ).toEqual(expectedObject);
   });
@@ -166,6 +175,7 @@ describe('auth reducer', () => {
       }),
     ).toEqual({
       token: null,
+      id: null,
       isLoggedIn: false,
       isLoading: false,
       error,

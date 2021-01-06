@@ -35,6 +35,7 @@ const Auth = (props) => {
     if( !location.pathname.indexOf('/room/')) {
       dispatch(roomReload());
     }
+    // HACK: redux-thunkを用いる場合はデータを引き渡さなくても良い
     dispatch(getUserTags(auth.token, auth.id));
   }, [location.pathname || auth.isLoading]);
 

@@ -79,10 +79,10 @@ const Signin = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn inputRef={register.inputRef} inputName="name" inputLabel="ユーザー名"  />
+            <InputColumn inputRef={register} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
-            <InputColumn inputRef={register.inputRef} inputName="password" inputLabel="パスワード" isPassword={true} />
+            <InputColumn inputRef={register} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="ログイン" backgroundColor="#F03636" onForm={true} />
