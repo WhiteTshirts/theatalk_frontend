@@ -99,7 +99,7 @@ export const getUserTags = (token, id) => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      dispatch(getUserTagsSuccess(res.data.data.tags))
+      dispatch(getUserTagsSuccess(res.data.tags))
     })
     .catch((err) => dispatch(getUserTagsFailure(err)));
 };
