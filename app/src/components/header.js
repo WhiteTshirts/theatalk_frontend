@@ -19,6 +19,7 @@ import { logout } from '../actions/authAction';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import RoomIcon from '@material-ui/icons/Room';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HeaderButton from './atoms/headerButton';
 
 
 
@@ -107,9 +108,12 @@ const Header = () => {
             <img src={`${window.location.origin}/images/logo.gif`} className={classes.logo} onClick={moveRooms}/>
             <div className={classes.grow}/>
             <CreateRoomDialog />
-            <Link onClick={moveTags} className={classes.link}>Tags<LoyaltyIcon fontSize="large" /></Link>
+            <HeaderButton msg="Tags" handleClick={() => moveTags} endIcon={<LoyaltyIcon fontSize ="large"/>}/>
+            <HeaderButton msg="Rooms" handleClick={() => moveRooms} endIcon={<RoomIcon fontSize ="large"/>}/>
+            <HeaderButton msg="Logout" handleClick={() => logoutDone} endIcon={<ExitToAppIcon fontSize ="large"/>}/>
+            {/* <Link onClick={moveTags} className={classes.link}>Tags<LoyaltyIcon fontSize="large" /></Link>
             <Link onClick={moveRooms} className={classes.link}>Rooms<RoomIcon fontSize="large" /></Link>
-            <Link onClick={logoutDone} className={classes.link}>Logout<ExitToAppIcon fontSize="large" /></Link>
+            <Link onClick={logoutDone} className={classes.link}>Logout<ExitToAppIcon fontSize="large" /></Link> */}
           </Toolbar>
         </AppBar>
       </header>
