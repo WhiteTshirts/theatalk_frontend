@@ -73,8 +73,8 @@ export const login = (user, history) => (dispatch) => {
     .then((res) => {
       // HACK: サーバーからのデータを整形してもらう
       localStorage.setItem('jwt', res.data.token);
-      localStorage.setItem('id', res.data.data.id);
-      dispatch(loginSuccess(res.data.token, res.data.data.id));
+      localStorage.setItem('id', res.data.user.id);
+      dispatch(loginSuccess(res.data.token, res.data.user.id));
       history.push('/');
     })
     .catch((err) => dispatch(loginFailure(err)));
@@ -93,8 +93,8 @@ export const signup = (user, history) => (dispatch) => {
     .then((res) => {
       // HACK: サーバーからのデータを整形してもらう
       localStorage.setItem('jwt', res.data.token);
-      localStorage.setItem('id', res.data.data.user.id);
-      dispatch(signupSuccess(res.data.token, res.data.data.user.id));
+      localStorage.setItem('id', res.data.user.id);
+      dispatch(signupSuccess(res.data.token, res.data.user.id));
       history.push('/tags?new=true')
     })
     .catch((err) => dispatch(signupFailure(err)))
