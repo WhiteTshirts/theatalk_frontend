@@ -1,7 +1,3 @@
-/**
- * Author: Hiranuma
- */
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -12,13 +8,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Switch from '@material-ui/core/Switch';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
 
 import TheatersIcon from '@material-ui/icons/Theaters';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { getRooms } from '../../actions/roomAction';
 import { openRoomDialog, closeRoomDialog, createRoom } from '../../actions/createRoomAction';
@@ -127,7 +120,7 @@ const CreateRoomDialog = () => {
     const roomData = JSON.stringify({
       room: {
         name: data.name,
-        youtube_id: videoId,//YuyaMiyata
+        youtube_id: videoId,
         is_private: isPrivate,
         start_time: selectedDate,
       },
@@ -168,7 +161,6 @@ const CreateRoomDialog = () => {
         {(() => {
           if (createRoomProps.err !== null && createRoomProps.err !== undefined) {
             return (
-              // karakawa
               <div>
                 <Alert severity="error"> ルームはすでに存在しています<strong></strong> </Alert>
               </div>
@@ -196,11 +188,7 @@ const CreateRoomDialog = () => {
             </div>
             <div>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DateTimePicker
-                  label="開始時間"
-                  value={selectedDate}
-                  handleChange={handleDateChange}
-                />
+                <DateTimePicker label="開始時間" value={selectedDate} handleChange={handleDateChange} disablePast ampm={false} />
               </MuiPickersUtilsProvider>
             </div>
           </DialogContent>

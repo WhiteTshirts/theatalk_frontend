@@ -13,7 +13,7 @@ const InputCreateRoomColumn = (props) => {
 
   const useStyles = makeStyles((thema) => ({
     textBox: {
-      "marginBottom": 10,
+      // "marginBottom": 10,
     }
   }));
 
