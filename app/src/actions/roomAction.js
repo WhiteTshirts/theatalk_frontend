@@ -146,10 +146,7 @@ export const searchRooms = (tag_id) => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      const tmp = {
-        room: res.data.data.rooms
-      };
-      dispatch(searchRoomsSuccess(tmp))
+      dispatch(searchRoomsSuccess(res.data.room))
     }).catch((err) => searchRoomsFailure(err));
 };
 
@@ -162,6 +159,6 @@ export const searchUserRooms = () => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      dispatch(searchRoomsSuccess(res.data.data))
+      dispatch(searchRoomsSuccess(res.data.room))
     }).catch((err) => searchRoomsFailure(err));
 };
