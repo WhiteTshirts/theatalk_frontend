@@ -9,7 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useHistory } from 'react-router-dom';
 import { login } from '../../actions/authAction';
 import Alert from '@material-ui/lab/Alert';
-import InputColumn from '../atoms/inputColumn';
+import InputFilledColumn from '../atoms/inputFilledColumn';
 
 const useStyles = makeStyles(() => ({
   formSpace: {
@@ -79,10 +79,10 @@ const Signin = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn inputRef={register} inputName="name" inputLabel="ユーザー名"  />
+            <InputFilledColumn inputRef={register} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
-            <InputColumn inputRef={register} inputName="password" inputLabel="パスワード" isPassword={true} />
+            <InputFilledColumn inputRef={register} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="ログイン" backgroundColor="#F03636" onForm={true} />

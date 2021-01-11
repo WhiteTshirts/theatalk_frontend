@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { signup } from '../../actions/authAction';
 import Alert from '@material-ui/lab/Alert';
-import InputColumn from '../atoms/inputColumn';
+import InputFilledColumn from '../atoms/inputFilledColumn';
 
 const useStyles = makeStyles(() => ({
   formLayout: {
@@ -79,13 +79,13 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit(Submit)}>
           <div>
-            <InputColumn inputRef={register} inputName="name" inputLabel="ユーザー名"  />
+            <InputFilledColumn inputRef={register} inputName="name" inputLabel="ユーザー名"  />
           </div>
           <div>
-            <InputColumn inputRef={register} inputName="password" inputLabel="パスワード" isPassword={true} />
+            <InputFilledColumn inputRef={register} inputName="password" inputLabel="パスワード" isPassword={true} />
           </div>
           <div>
-            <InputColumn inputRef={register} inputName="anotherPassword" inputLabel="パスワード(確認)" isPassword={true} />
+            <InputFilledColumn inputRef={register} inputName="anotherPassword" inputLabel="パスワード(確認)" isPassword={true} />
           </div>
           <div>
             <BasicButton msg="登録" backgroundColor="#F03636" onForm={true} />
