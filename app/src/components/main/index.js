@@ -78,7 +78,7 @@ export const RoomList = (rooms) => {
   const classes = useStyles();
 
   const handleClick = (index) => {
-    dispatch(enterRoom(token, history, rooms.rooms[index]))
+    dispatch(enterRoom(history, rooms.rooms[index]))
   };
 
   if (rooms.isFetching) {
