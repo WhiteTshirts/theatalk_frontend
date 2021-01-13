@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
  * @param {string} props.inputName 
  * @param {string} props.inputLabel 入力欄に書いてある文字
  * @param {method} props.onChange 変化で発火してほしい関数
- * @param {boolean} props.password パスワード指定
+ * @param {string} props.password パスワード指定
  * @param {string} props.variant variant指定
  * @param {int} props.margin margin幅指定
  */
@@ -31,7 +31,7 @@ const InputColumn = (props) => {
               name={props.inputName}
               label={props.inputLabel}
               onChange={props.onChange}
-              password={props.password}
+              type={props.password}
               variant={props.variant}
             />
       }
