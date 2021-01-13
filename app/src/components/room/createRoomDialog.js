@@ -15,7 +15,7 @@ import TheatersIcon from '@material-ui/icons/Theaters';
 import { makeStyles } from '@material-ui/core/styles';
 import { getRooms } from '../../actions/roomAction';
 import { openRoomDialog, closeRoomDialog, createRoom } from '../../actions/createRoomAction';
-import InputCreateRoomColumn from '../atoms/inputColumn';
+import InputColumn from '../atoms/inputColumn';
 
 import Alert from '@material-ui/lab/Alert';
 
@@ -181,10 +181,10 @@ const CreateRoomDialog = () => {
         <form onSubmit={handleSubmit(Submit)}>
           <DialogContent>
             <div>
-              <InputCreateRoomColumn inputRef={register} inputName="name" inputLabel="ルーム名" />
+              <InputColumn inputRef={register} inputName="name" inputLabel="ルーム名" />
             </div>
             <div>
-              <InputCreateRoomColumn inputRef={register} inputName="youtube_id" inputLabel="youtube URL" onChange={handleVideoInfo} />
+              <InputColumn inputRef={register} inputName="youtube_id" inputLabel="youtube URL" onChange={handleVideoInfo} />
             </div>
             <div>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>

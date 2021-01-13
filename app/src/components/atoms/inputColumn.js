@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
  * @param {boolean} props.password パスワード指定
  * @param {string} props.variant variant指定
  */
-const InputCreateRoomColumn = (props) => {
+const InputColumn = (props) => {
 
   const useStyles = makeStyles((thema) => ({
     textBox: {
@@ -38,4 +38,4 @@ const InputCreateRoomColumn = (props) => {
   )
 };
 
-export default InputCreateRoomColumn;
+export default InputColumn;
