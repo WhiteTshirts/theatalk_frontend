@@ -188,7 +188,7 @@ const CreateRoomDialog = () => {
             </div>
             <div>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DateTimePicker label="開始時間" value={selectedDate} handleChange={handleDateChange} disablePast ampm={false} />
+                <DateTimePicker label="開始時間" value={selectedDate} onChange={handleDateChange} disablePast ampm={false} />
               </MuiPickersUtilsProvider>
             </div>
           </DialogContent>
