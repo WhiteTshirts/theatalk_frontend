@@ -124,7 +124,7 @@ export const getRooms = (token) => (dispatch) => {
     },
   })
     .then((res) => {
-      dispatch(getRoomsSuccess(res.data.data))
+      dispatch(getRoomsSuccess(res.data.rooms))
     })
     .catch((err) => dispatch(getRoomsFailure(err)));
 };
@@ -141,7 +141,6 @@ export const roomReload = () => (dispatch) => {
  * 特定のタグを持つルームを検索する
  */
 export const searchRooms = (tag_id) => (dispatch, getState) => {
-  console.log(tag_id);
   const store = getState();
   dispatch(searchRoomsRequest());
   return axios.get(`http://localhost:5000/api/v1/room_tags/${tag_id}`, {
@@ -150,10 +149,7 @@ export const searchRooms = (tag_id) => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      const tmp = {
-        room: res.data.data.rooms
-      };
-      dispatch(searchRoomsSuccess(tmp))
+      dispatch(searchRoomsSuccess(res.data.room))
     }).catch((err) => searchRoomsFailure(err));
 };
 
@@ -166,6 +162,6 @@ export const searchUserRooms = () => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      dispatch(searchRoomsSuccess(res.data.data))
+      dispatch(searchRoomsSuccess(res.data.room))
     }).catch((err) => searchRoomsFailure(err));
 };

@@ -1,28 +1,21 @@
-/**
- * Author: Hiranuma
- */
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Switch from '@material-ui/core/Switch';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
 
 import TheatersIcon from '@material-ui/icons/Theaters';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { getRooms } from '../../actions/roomAction';
 import { openRoomDialog, closeRoomDialog, createRoom } from '../../actions/createRoomAction';
+import InputColumn from '../atoms/inputColumn';
 
 import Alert from '@material-ui/lab/Alert';
 
@@ -76,12 +69,10 @@ const CreateRoomDialog = () => {
   // 開始時間
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  {/*yuyamiyata*/ }
   const [url, setUrl] = useState('');
   const [thumnail, setThumnail] = useState('');
   const [title, setTitle] = useState('');
 
-  {/*yuyamiyata*/ }
   useEffect(() => {
     axios.get(url)
       .then(res => res.data.items[0].snippet)
@@ -96,6 +87,8 @@ const CreateRoomDialog = () => {
 
   const handleClose = () => {
     dispatch(closeRoomDialog());
+    setThumnail('');
+    setTitle('');
   };
 
   const handleIsPrivateChange = () => {
@@ -106,7 +99,6 @@ const CreateRoomDialog = () => {
     setSelectedDate(date);
   };
 
-  {/*yuyamiyata*/ }
   const handleVideoInfo = (e) => {
     const id = e.target.value.match(/[\/?=]([a-zA-Z0-9_\-]{11})[&\?]?/)[1];
     setUrl(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${API_KEY}&part=snippet&fields=items(snippet(title,thumbnails.default))`);
@@ -114,7 +106,6 @@ const CreateRoomDialog = () => {
   };
 
   const Submit = (data) => {
-    /*yuya miyata*/
     const url = "https://www.youtube.com/watch?v=";
     const another_url = "https://youtu.be/"
     let videoId;
@@ -129,7 +120,7 @@ const CreateRoomDialog = () => {
     const roomData = JSON.stringify({
       room: {
         name: data.name,
-        youtube_id: videoId,//YuyaMiyata
+        youtube_id: videoId,
         is_private: isPrivate,
         start_time: selectedDate,
       },
@@ -150,7 +141,7 @@ const CreateRoomDialog = () => {
       dispatch(getRooms(token));
       handleClose();
     }
-    //次回ルーム作成時に表示されないように初期化YuyaMiyata
+    //次回ルーム作成時に表示されないように初期化
     setThumnail('');
     setTitle('');
   };
@@ -170,7 +161,6 @@ const CreateRoomDialog = () => {
         {(() => {
           if (createRoomProps.err !== null && createRoomProps.err !== undefined) {
             return (
-              // karakawa
               <div>
                 <Alert severity="error"> ルームはすでに存在しています<strong></strong> </Alert>
               </div>
@@ -183,67 +173,24 @@ const CreateRoomDialog = () => {
               </div>
             );
           }
-          // karakawa
         })()}
-        {/*yuyamiyata*/}
-        {/* karakawa */}
         <div align="center" style={{fontFamily:"Arial,sans-serif,Roboto", marginLeft:"30pt", marginRight:"30pt"}}>
           <img src={thumnail}/>
           <p>{title}</p>
         </div>
-        {/* karakawa */}
         <form onSubmit={handleSubmit(Submit)}>
           <DialogContent>
             <div>
-              <TextField
-                name="name"
-                label="ルーム名"
-                inputRef={register}
-              />
+              <InputColumn inputRef={register} inputName="name" inputLabel="ルーム名" />
             </div>
-            <p> {/*TextFiledの間隔を取るため */} </p>
             <div>
-              <TextField onChange={handleVideoInfo}
-                name="youtube_id"
-                label="youtube url"
-                inputRef={register}
-              />
+              <InputColumn inputRef={register} inputName="youtube_id" inputLabel="youtube URL" onChange={handleVideoInfo} />
             </div>
-            {/* <div>
-              <Grid container>
-                <Grid item xs={1}>
-                  <p>Key</p>
-                </Grid>
-                <Grid item xs={1}>
-                  <p>
-                    <Switch
-                      value="key"
-                      checked={isPrivate}
-                      onChange={handleIsPrivateChange}
-                      name="isPrivate"
-                      className={classes.switchPosition}
-                    />
-                  </p>
-                </Grid>
-              </Grid>
-            </div> */}
-            <p> {/*TextFiledの間隔を取るため */} </p>
             <div>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <DateTimePicker
-                  label="開始時間"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                />
+                <DateTimePicker label="開始時間" value={selectedDate} onChange={handleDateChange} disablePast ampm={false} />
               </MuiPickersUtilsProvider>
             </div>
-
-            {/* <Paper variant="outlined" elevation={3} className={classes.tagCard}>
-              <li>Tag1</li>
-              <li>Tag2</li>
-              <li>Tag3</li>
-            </Paper> */}
-
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} variant="contained">Cancel</Button>

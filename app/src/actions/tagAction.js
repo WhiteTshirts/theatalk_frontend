@@ -82,7 +82,7 @@ export const getTags = (token) => (dispatch) => {
     },
   })
     .then((res) => {
-      dispatch(getTagsSuccess(res.data.data.tags))
+      dispatch(getTagsSuccess(res.data.tags))
     })
     .catch((err) => dispatch(getTagsFailure(err)));
 };
@@ -99,7 +99,7 @@ export const getUserTags = (token, id) => (dispatch, getState) => {
     },
   })
     .then((res) => {
-      dispatch(getUserTagsSuccess(res.data.data.tags))
+      dispatch(getUserTagsSuccess(res.data.tags))
     })
     .catch((err) => dispatch(getUserTagsFailure(err)));
 };
@@ -114,7 +114,7 @@ export const postTag = (token, tag, id) => (dispatch) => {
     .then((res) => {
       console.log(res.data.data.tag);
       dispatch(postTagSuccess(res.data));
-      dispatch(postUserTag(token, id, res.data.data.tag))
+      dispatch(postUserTag(token, id, res.data.tag))
       dispatch(getTags(token));
     })
     .catch((err) => dispatch(postTagFailure(err)))
