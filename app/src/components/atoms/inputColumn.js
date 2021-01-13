@@ -23,19 +23,15 @@ const InputColumn = (props) => {
   const styles = useStyles();
 
   return (
-    <>
-      {
-        <TextField
-              inputRef={props.inputRef}
-              className={styles.textBox}
-              name={props.inputName}
-              label={props.inputLabel}
-              onChange={props.onChange}
-              type={props.password}
-              variant={props.variant}
-            />
-      }
-    </>
+      <TextField
+            inputRef={props.inputRef}
+            className={styles.textBox}
+            name={props.inputName}
+            label={props.inputLabel}
+            onChange={props.onChange}
+            type={props.password}
+            variant={props.variant}
+          />
   )
 };
 
