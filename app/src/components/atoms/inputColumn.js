@@ -10,12 +10,13 @@ import TextField from '@material-ui/core/TextField';
  * @param {method} props.onChange 変化で発火してほしい関数
  * @param {boolean} props.password パスワード指定
  * @param {string} props.variant variant指定
+ * @param {int} props.margin margin幅指定
  */
 const InputColumn = (props) => {
 
   const useStyles = makeStyles((thema) => ({
     textBox: {
-      margin: 10,
+      margin: props.margin,
     }
   }));
 
