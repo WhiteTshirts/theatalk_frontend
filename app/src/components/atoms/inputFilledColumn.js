@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
  * @param {string} props.inputLabel 入力欄に書いてある文字
  * @param {boolean} props.isPassword パスワードかどうか
  */
-const InputFilledColumn = (props) => {
+const InputColumn = (props) => {
 
   const useStyles = makeStyles((thema) => ({
     textBox: {
@@ -47,4 +47,4 @@ const InputFilledColumn = (props) => {
   )
 };
 
-export default InputFilledColumn;
+export default InputColumn;
