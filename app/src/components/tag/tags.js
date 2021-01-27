@@ -1,18 +1,15 @@
-/*
-* YuyaMiyata
-*/
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { getTags, postTag, postUserTag, getUserTags } from '../../actions/tagAction';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Alert from '@material-ui/lab/Alert';  // Hiranuma
+import Alert from '@material-ui/lab/Alert';
+import InputColumn from '../atoms/inputColumn';
 
 const useStyles = makeStyles ((theme)=>({
   root:{
@@ -62,7 +59,7 @@ const tokenSelector = (state) => state.auth.token;
 const userIDSelector = (state) => state.auth.id;
 const tagsSelector = (state) => state.userTags;
 const totalTagsSelector = (state) => state.tags.tags;
-const errorSelector = (state) => state.tags.error; // Hiranuma
+const errorSelector = (state) => state.tags.error;
 
 export const TagList = (tags) => {
   const classes = useStyles()
@@ -99,8 +96,8 @@ const Tags = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { register, handleSubmit, reset } = useForm();
-  const [msg, setMsg] = useState('');   // Hiranuma
-  const err = useSelector(errorSelector);   // Hiranuma
+  const [msg, setMsg] = useState('');
+  const err = useSelector(errorSelector);
 
   const [isNewUser, setIsNewUser] = useState(false);
 
@@ -114,8 +111,6 @@ const Tags = () => {
   }, []);
 
   const Submit = (data) => {
-    // Hiranuma
-    // TODO
     if(data.name === ""){
       setMsg('タグ名が入力されていません');
     }else{
@@ -128,7 +123,6 @@ const Tags = () => {
       }
     }
     reset();
-    // Hiranuma
   };
 
   return (
@@ -145,7 +139,6 @@ const Tags = () => {
       })()}
       <Grid container className={classes.root}>
         <Paper className={classes.paper} elevation={5}>
-          {/*  Hiranuma */}
           {(() => {
             if (err !== null && err !== undefined) {
               return (
@@ -161,16 +154,10 @@ const Tags = () => {
               );
             }
           })()}
-          {/* Hiranuma */}
           <Grid item>
           <form onSubmit={handleSubmit(Submit)}>
             <div className={classes.panel}>
-              <TextField
-                name="name"
-                label="Input"
-                inputRef={register}
-                variant="filled"
-              />
+              <InputColumn inputRef={register} inputName="name" inputLabel="タグ名" variant="filled" />
             </div>
             <div className={classes.panel}>
               <Button type="submit" className={classes.button}>
