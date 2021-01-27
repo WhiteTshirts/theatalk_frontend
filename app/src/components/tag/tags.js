@@ -25,7 +25,6 @@ const useStyles = makeStyles ((theme)=>({
     width:600,
   },
   panel:{
-    padding: theme.spacing(1),
     textAlign: 'center',
   },
   tagPanel:{
@@ -157,7 +156,7 @@ const Tags = () => {
           <Grid item>
           <form onSubmit={handleSubmit(Submit)}>
             <div className={classes.panel}>
-              <InputColumn inputRef={register} inputName="name" inputLabel="タグ名" variant="filled" />
+              <InputColumn inputRef={register} inputName="name" inputLabel="タグ名" variant="filled" margin={10} />
             </div>
             <div className={classes.panel}>
               <Button type="submit" className={classes.button}>
