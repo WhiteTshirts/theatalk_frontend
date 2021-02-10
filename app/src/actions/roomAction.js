@@ -24,7 +24,7 @@ export const enterRoomRequest = () => ({
 });
 
 export const ENTER_ROOM_SUCCESS = 'ENTER_ROOM_SUCCESS';
-export const enterRoomSuccess = ({room, ws, chats}) => ({
+export const enterRoomSuccess = (room, ws, chats) => ({
   type: ENTER_ROOM_SUCCESS,
   room,
   ws,
@@ -54,7 +54,7 @@ export const existRoomFailure = (error) => ({
 })
 
 export const SET_ROOM = 'SET_ROOM';
-export const setRoom = ({room, ws, chats}) => ({
+export const setRoom = (room, ws, chats) => ({
   type: SET_ROOM,
   room,
   ws,
@@ -94,7 +94,7 @@ export const enterRoom = (history, room) => (dispatch, getState) => {
   })
     .then((res) => {
       // TODO: chatを開始する
-      dispatch(enterRoomSuccess(room));
+      dispatch(enterRoomSuccess(room, undefined, undefined));
       localStorage.setItem('room', JSON.stringify(room));
     })
     .catch((err) => dispatch(getRoomsFailure(err)))
